@@ -2,15 +2,9 @@
 
 <%= simple_form_for (@cocktail) do |f| %>
   <div class="form-group">
-    <%= f.input :name %>
+    <%= f.input :name, id: 'new-cocktail-name' %>
   </div>
-
-  <!-- <div class="form-group"> -->
-    <%#= f.label :ingredients %>
-    <%#= f.select(:ingredients, @ingredients, {}, {}) %>
-  <!-- </div> -->
-
-  <%= f.submit 'Create your cocktail', class:"btn btn-success" %>
+  <%= f.submit 'Validate your cocktail name', class:"btn btn-success", id: 'create' %>
 <% end %>
 
 <br>

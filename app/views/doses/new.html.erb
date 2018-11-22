@@ -1,0 +1,22 @@
+<h1>What dose do you want to add to <strong><%= @cocktail.name %></strong></h1>
+
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <% if @dose.errors.any? %>
+    <div class="errors-container">
+      <ul>
+        <% @dose.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.input :description %>
+  <%= f.association :ingredient, :collection => Ingredient.all.order(:name) %>
+  <br>
+  <br>
+  <%= f.submit "add a dose", class: 'btn btn-success' %>
+  <%= link_to "back to list", cocktail_path(@cocktail), class: 'btn btn-primary' %>
+
+
+<% end %>

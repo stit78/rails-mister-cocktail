@@ -1,0 +1,17 @@
+<h1>Create a new cocktail</h1>
+
+<%= simple_form_for (@cocktail) do |f| %>
+  <div class="form-group">
+    <%= f.input :name %>
+  </div>
+
+  <!-- <div class="form-group"> -->
+    <%#= f.label :ingredients %>
+    <%#= f.select(:ingredients, @ingredients, {}, {}) %>
+  <!-- </div> -->
+
+  <%= f.submit 'Create your cocktail', class:"btn btn-success" %>
+<% end %>
+
+<br>
+<%= link_to 'Back to list', cocktails_path, class: "btn btn-primary" %>

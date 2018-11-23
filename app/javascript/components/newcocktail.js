@@ -1,9 +1,4 @@
-document.querySelector("#create").addEventListener('click', (event) => {
-  event.preventDefault();
-  enhanceForm()
-});
-
-const enhanceForm = () => {
+const enhanceForm = (event) => {
   const input = document.getElementById("new_cocktail");
   const text = `<br><div class="form-group string required dose_description">\n
 <label class="form-control-label string required" for="dose_description">Description <abbr title="required">*</abbr></label>\n
@@ -20,6 +15,7 @@ const enhanceForm = () => {
 `;
   input.insertAdjacentHTML('beforeend', text);
 };
+
 
 
 

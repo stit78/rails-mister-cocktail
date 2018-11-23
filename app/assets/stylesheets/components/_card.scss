@@ -11,16 +11,13 @@
   justify-content: center;
   flex-wrap: wrap;
   .cocktail-card {
+    box-shadow: 5px 5px 5px rgb(220, 220, 220);
     flex: 0 0 auto;
-    background-color: rgb(220, 220, 220);
     width: 350px;
-    // height: 170px;
-    // padding: 10px;
     margin: 10px;
   }
 }
 .cocktail-info-container {
-  background: ligth-gray;
   padding: 10px;
   height: 140px;
   h2 {

@@ -1,58 +1,34 @@
-<!-- <div class="container">
-  <h1>List of cocktails (<%= @cocktails.count %>)</h1>
-  <div class="row">
-
-    <%# @cocktails.each do |cocktail| %>
-      <div class="col-xs-12 col-sm-6">
-        <div class="cocktail-card">
-          <div class="cocktail-info-container">
-            <div class="cocktail-name">
-              <h2><%#= cocktail.name.capitalize %></h2>
-            </div>
-            <div class="cocktail-ingredient">
-              <ul>
-                <%# cocktail.doses.each do |dose| %>
-                  <li>
-                    <%#= dose.ingredient.name.capitalize %>
-                  </li>
-                <%# end %>
-              </ul>
-            </div>
-          </div>
-          <div class="cocktail-footer">
-            <%#= link_to 'Details', cocktail_path(cocktail) %>
-          </div>
-        </div>
-      </div>
-    <%# end %>
-  </div>
-</div> -->
-
+<%= render "shared/banner" %>
 <div class="container">
   <h1>List of cocktails (<%= @cocktails.count %>)</h1>
     <div class="cocktail-card-container">
       <% @cocktails.each do |cocktail| %>
-          <div class="cocktail-card">
-            <div class="cocktail-info-container">
-              <div class="cocktail-name">
-                <h2><%= cocktail.name.capitalize %></h2>
-              </div>
-              <div class="cocktail-ingredient">
-                <ul>
-                  <% cocktail.doses.first(4).each do |dose| %>
-                    <li>
-                      <%= dose.ingredient.name.capitalize %>
+        <div class="cocktail-card">
+          <% if !cocktail.photo.blank? %>
+            <div class="cocktail-info-container" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+              url(<%= cl_image_path(cocktail.photo, height: 300, width: 400, crop: :fill) %>)">
+          <% else %>
+            <div class="cocktail-info-container" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+              url(<%= cl_image_path("ylm0qhm56yekffpd8zl3",width: 400, height: 300, crop: :fill) %>)">
+          <% end %>
+                <div class="cocktail-name">
+                  <h2><%= cocktail.name.capitalize %></h2>
+                </div>
+                <div class="cocktail-ingredient">
+                  <ul>
+                    <% cocktail.doses.first(4).each do |dose| %>
+                      <li>
+                        <%= dose.ingredient.name.capitalize %>
 
-                    </li>
-                  <% end %>
-                </ul>
-              </div>
-            </div>
-            <div class="cocktail-footer">
-              <%= link_to 'Details', cocktail_path(cocktail) %>
-            </div>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
           </div>
+          <div class="cocktail-footer">
+            <%= link_to 'Details', cocktail_path(cocktail) %>
+          </div>
+        </div>
       <% end %>
     </div>
-
 </div>

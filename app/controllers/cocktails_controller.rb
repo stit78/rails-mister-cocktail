@@ -18,7 +18,12 @@ class CocktailsController < ApplicationController
 
     if @cocktail.valid?
       @cocktail.save
-      redirect_to cocktail_path(@cocktail)
+      @dose = Dose.new(dose_params)
+      @dose.cocktail = @cocktail
+      if @dose.valid?
+        @dose.save
+        redirect_to cocktail_path(@cocktail)
+      end
     else
       render :new
     end
@@ -32,5 +37,9 @@ class CocktailsController < ApplicationController
 
   def cocktail_params
     params.require(:cocktail).permit(:name)
+  end
+
+  def dose_params
+    params.require(:dose).permit(:description, :ingredient_id)
   end
 end
